@@ -17,7 +17,7 @@ import Protected from './features/auth/components/Protected';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Protected><Home/></Protected>,
     
   },
   {
@@ -30,15 +30,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/cart",
-    element: <CartPage/>,
+    element: <Protected><CartPage/></Protected>,
   },
   {
     path: "/checkout",
-    element: <Checkout/>,
+    element: <Protected><Checkout/></Protected>,
   },
   {
     path: "/productdetail/:id",
-    element: <ProductDetailPage/>,
+    element:<Protected> <ProductDetailPage/></Protected>,
   },
 ]);
 

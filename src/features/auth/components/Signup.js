@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserAsync, selectLoggedInUser } from "../AuthSlice";
@@ -13,7 +13,17 @@ const dispatch = useDispatch()
     watch,
     formState: { errors },
   } = useForm();
-  console.log(errors);
+
+  const comingUserData = useSelector(selectLoggedInUser)
+
+  function doReturn(){
+    console.log('found')
+    
+  }
+
+ 
+  
+  
 
   
  
@@ -21,6 +31,7 @@ const dispatch = useDispatch()
 
   return (
     <> 
+    {comingUserData && <Navigate to="/login" replace={true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -38,8 +49,10 @@ const dispatch = useDispatch()
             noValidate
             className="space-y-6"
             onSubmit={handleSubmit((data) => {
-              dispatch(createUserAsync({data:data.email,password:data.password}))
-              console.log(data);
+              dispatch(createUserAsync({email:data.email,password:data.password}))
+              doReturn()
+              
+              
             })}
           >
             <div>
@@ -60,6 +73,7 @@ const dispatch = useDispatch()
                     },
                   })}
                   type="email"
+                  autoComplete="true"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 <p className="text-red-500">{errors?.email?.message}</p>
@@ -93,6 +107,7 @@ const dispatch = useDispatch()
                              - Can contain special characters`,
                   },})}
                   type="password"
+                  autoComplete="true"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 <p className="text-red-500">{errors?.password?.message}</p>
@@ -123,6 +138,7 @@ const dispatch = useDispatch()
                     validate: (value,formValues) => value === formValues.password || "Password not matching"
                   })}
                   type="password"
+                  autoComplete="true"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 <p className="text-red-500">
@@ -133,6 +149,7 @@ const dispatch = useDispatch()
 
             <div>
               <button
+        
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
