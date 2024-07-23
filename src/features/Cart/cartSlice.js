@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './counterAPI';
+import { addToCart, fetchCount } from './cartAPI';
 
 const initialState = {
   value: 0,
-  status: 'idle',
+  items: [],
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -11,17 +11,16 @@ const initialState = {
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
-export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
-  async (amount) => {
-    const response = await fetchCount(amount);
-    // The value we return becomes the `fulfilled` action payload
+export const addToCartAsync = createAsyncThunk(
+  'counter/addToCart',
+  async (item) => {
+    const response = await addToCart(item);
     return response.data;
   }
 );
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: 'cart',
   initialState,
   reducers: {
     increment: (state) => {
@@ -36,12 +35,12 @@ export const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(addToCartAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(addToCartAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.value += action.payload;
+        state.items.push(action.payload) 
       });
   },
 });

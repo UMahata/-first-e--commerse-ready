@@ -1,0 +1,1 @@
+export const ITEAMS_PER_PAGE = 15
