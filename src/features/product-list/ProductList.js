@@ -451,7 +451,7 @@ const Pagination = ({handlePage,page,setPage,totalItems}) => {
               <span className="font-medium">{totalItems}</span> results
             </p>
           </div>
-          <div>
+          <div >
             <nav
               className="isolate inline-flex -space-x-px rounded-md shadow-sm"
               aria-label="Pagination"

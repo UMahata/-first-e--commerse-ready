@@ -1,20 +1,39 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addToCart, fetchCount } from './cartAPI';
+import { addToCart,deleteCart,deleteItemFromCart,fetchIteamsById,updateCart } from './cartAPI';
 
 const initialState = {
-  value: 0,
+  status:'ideal',
   items: [],
+  
 };
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
+
 export const addToCartAsync = createAsyncThunk(
-  'counter/addToCart',
+  'cart/addToCart',
   async (item) => {
     const response = await addToCart(item);
+    return response.data;
+  }
+);
+export const fetchIteamsByIdAsync = createAsyncThunk(
+  'cart/fetchIteamsById',
+  async (userId) => {
+    const response = await fetchIteamsById(userId);
+    return response.data;
+  }
+);
+export const updateCartAsync = createAsyncThunk(
+  'cart/updateCart',
+  async (update) => {
+    const response = await updateCart(update);
+    return response.data;
+  }
+);
+export const deleteItemFromCartAsync = createAsyncThunk(
+  'cart/deleteItemFromCart',
+  async (itemId) => {
+    const response = await deleteItemFromCart(itemId);
+    
     return response.data;
   }
 );
@@ -41,13 +60,37 @@ export const counterSlice = createSlice({
       .addCase(addToCartAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.items.push(action.payload) 
-      });
+      })
+      .addCase(fetchIteamsByIdAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchIteamsByIdAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.items = action.payload ;
+      })
+      .addCase( updateCartAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase( updateCartAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        const index = state.items.findIndex(item=>item.id === action.payload.id)
+        state.items[index]= action.payload ;
+      })
+      .addCase(deleteItemFromCartAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(deleteItemFromCartAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        console.log(action.payload)
+        const index = state.items.findIndex(item=>item.id === action.payload)
+        state.items.splice(index,1);
+      })
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment} = counterSlice.actions;
 
-export const selectCount = (state) => state.counter.value;
+export const selectIteams = (state) => state.cart.items;
 
 
 

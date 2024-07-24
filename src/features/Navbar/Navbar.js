@@ -11,6 +11,8 @@ import {
   } from '@headlessui/react'
   import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectIteams } from '../Cart/cartSlice'
   
   const user = {
     name: 'Tom Cook',
@@ -34,6 +36,8 @@ import { Link } from 'react-router-dom'
   }
 
 const Navbar = ({children}) => {
+
+  const cartItems = useSelector(selectIteams)
   return (
     <>
       
@@ -83,9 +87,9 @@ const Navbar = ({children}) => {
                         <span className="absolute -inset-1.5" />
                         <span className="sr-only">View notifications</span>
                         < ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                        <span className="inline-flex items-center rounded-md bg-red-50 px-1 absolute  top-0  py-0.2  text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                       4
-                      </span>
+                        { cartItems.length>0 && <span className="inline-flex items-center rounded-md bg-red-50 px-1 absolute  top-0  py-0.2  text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                       {cartItems.length}
+                      </span>}
                       </button>
                       </Link>
 
@@ -174,9 +178,9 @@ const Navbar = ({children}) => {
                     >
                       <span className="absolute -inset-1.5" />
                       < ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                      <span className="inline-flex items-center rounded-md bg-red-50 px-1 absolute  top-0  py-0.2  text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                       4
-                      </span>
+                      {cartItems.length>0 && <span className="inline-flex items-center rounded-md bg-red-50 px-1 absolute  top-0  py-0.2  text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                       {cartItems.length}
+                      </span>}
                     </button>
                     
                   </div>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchProductByIdAsync, selectedProductById } from './ProductListSlice'
 import { useParams } from 'react-router-dom'
 import { addToCartAsync } from '../Cart/cartSlice'
+import { selectLoggedInUser } from '../auth/AuthSlice'
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -68,6 +69,7 @@ function classNames(...classes) {
 const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0])
   const [selectedSize, setSelectedSize] = useState(sizes[2])
+  const user = useSelector(selectLoggedInUser)
   const dispatch = useDispatch()
   const params = useParams()
   const productData = useSelector(selectedProductById)
@@ -75,11 +77,11 @@ const ProductDetail = () => {
   // if(quickdata){
   //   getProduct(quickdata)
   // }
-  
+ 
 
   const handleCart=(e)=>{
     e.preventDefault()
-     dispatch(addToCartAsync({quantity:1}))
+     dispatch(addToCartAsync({...productData,quantity:1,user:user.id}))
   }
   
 
@@ -87,7 +89,6 @@ const ProductDetail = () => {
     dispatch(fetchProductByIdAsync(params.id))
   },[dispatch,params.id])
 
-  console.log(productData)
 
   return (
     <>
