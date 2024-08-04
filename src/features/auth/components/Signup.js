@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserAsync, selectLoggedInUser } from "../AuthSlice";
 
+
 const Signup = () => {
 const dispatch = useDispatch()
 
@@ -49,7 +50,7 @@ const dispatch = useDispatch()
             noValidate
             className="space-y-6"
             onSubmit={handleSubmit((data) => {
-              dispatch(createUserAsync({email:data.email,password:data.password}))
+              dispatch(createUserAsync({email:data.email,password:data.password,addresses:[]}))
               doReturn()
               
               
@@ -89,12 +90,7 @@ const dispatch = useDispatch()
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
+                 
                 </div>
               </div>
               <div className="mt-2">
@@ -122,12 +118,7 @@ const dispatch = useDispatch()
                   Confirm Password
                 </label>
                 <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
+                
                 </div>
               </div>
               <div className="mt-2">

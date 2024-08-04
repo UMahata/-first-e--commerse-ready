@@ -10,7 +10,7 @@ import {
     Transition,
   } from '@headlessui/react'
   import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectIteams } from '../Cart/cartSlice'
   
@@ -26,9 +26,9 @@ import { selectIteams } from '../Cart/cartSlice'
    
   ]
   const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
+    { name: 'My Profile', href: '/profile' },
+    { name: 'My Orders', href: '/orders' },
+    { name: 'Sign out', href: 'logout' },
   ]
   
   function classNames(...classes) {
@@ -61,6 +61,7 @@ const Navbar = ({children}) => {
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map((item) => (
                           <a
+                          
                             key={item.name}
                             href={item.href}
                             className={classNames(
@@ -109,20 +110,22 @@ const Navbar = ({children}) => {
                           leave="transition ease-in duration-75"
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
+                          
                         >
                           <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             {userNavigation.map((item) => (
                               <MenuItem key={item.name}>
                                 {({ focus }) => (
-                                  <a
-                                    href={item.href}
+                                  <Link
+                                    to ={`${item.href}`}
+                                   
                                     className={classNames(
                                       focus ? 'bg-gray-100' : '',
                                       'block px-4 py-2 text-sm text-gray-700',
                                     )}
                                   >
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 )}
                               </MenuItem>
                             ))}

@@ -1,7 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectLoggedInUser } from '../AuthSlice'
+
 import { Navigate } from 'react-router-dom'
+
+import { selectLoggedInUser } from '../AuthSlice'
 
 const Protected = ({children}) => {
   const user = useSelector(selectLoggedInUser)

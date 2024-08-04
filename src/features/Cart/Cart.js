@@ -2,7 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {  selectIteams } from "./cartSlice";
 import {updateCartAsync,deleteItemFromCartAsync} from './cartSlice'
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, Navigate } from "react-router-dom";
 
 
 
@@ -30,6 +31,7 @@ export default function Cart() {
 
   return (
     <>
+    {cartItems.length<=0 && <Navigate to= '/' replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white mt-20">
         <div className="flex justify-center">
           <h2 className="text-4xl w-5 text-center m-6">Cart</h2>
@@ -109,12 +111,12 @@ export default function Cart() {
           </p>
           <Link to="/checkout">
             <div className="mt-6">
-              <a
+              <div
                 href="#"
                 className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
               >
                 Checkout
-              </a>
+              </div>
             </div>
           </Link>
           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">

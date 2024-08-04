@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { checkUser, createUser, fetchCount } from './AuthAPI';
+import { checkUser, createUser, signOut } from './AuthAPI';
+
+import { updateUser } from '../user/UserAPI';
 
 const initialState = {
   loggedInUser: null,
@@ -19,6 +21,20 @@ export const checkUserAsync = createAsyncThunk(
   'user/checkUser',
   async (loginInfo) => {
     const response = await checkUser(loginInfo);
+    return response.data;
+  }
+);
+export const updateUserAsync = createAsyncThunk(
+  'user/updateUser',
+  async (update) => {
+    const response = await updateUser(update);
+    return response.data;
+  }
+);
+export const signOutAsync = createAsyncThunk(
+  'user/signOut',
+  async (userId) => {
+    const response = await signOut(userId);
     return response.data;
   }
 );
@@ -50,13 +66,28 @@ export const counterSlice = createSlice({
       .addCase(checkUserAsync.rejected, (state, action) => {
         state.status = 'idle';
         state.error = action.error;
-      });
+      })
+      .addCase(updateUserAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateUserAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.loggedInUser = action.payload;
+      })
+      .addCase(signOutAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(signOutAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.loggedInUser = null;
+      })
+      
   },
 });
 
 export const selectLoggedInUser = (state)=>state.auth.loggedInUser
 export const selectError = (state)=>state.auth.error
-export const { increment} = counterSlice.actions;
+
 
 
 

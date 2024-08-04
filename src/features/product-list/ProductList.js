@@ -1,5 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllProductsAsync, fetchBrandsAsync, fetchCategoriesAsync, fetchProductsByFiltersAsync, increment, incrementAsync, selectBrands, selectCategories, selectCount } from "./ProductListSlice";
+import {
+  fetchAllProductsAsync,
+  fetchBrandsAsync,
+  fetchCategoriesAsync,
+  fetchProductsByFiltersAsync,
+  increment,
+  incrementAsync,
+  selectBrands,
+  selectCategories,
+  selectCount,
+} from "./ProductListSlice";
 
 import { useEffect, useState } from "react";
 import {
@@ -30,14 +40,10 @@ import { initializeUseSelector } from "react-redux/es/hooks/useSelector";
 import { ITEAMS_PER_PAGE } from "../../app/constants";
 
 const sortOptions = [
- 
-  { name: "Best Rating", sort:'rating',order:'desc', current: false },
-  { name: "Price: Low to High",sort:'price',order:'asc', current: false },
-  { name: "Price: High to Low", sort:'price',order:'desc', current: false },
+  { name: "Best Rating", sort: "rating", order: "desc", current: false },
+  { name: "Price: Low to High", sort: "price", order: "asc", current: false },
+  { name: "Price: High to Low", sort: "price", order: "desc", current: false },
 ];
-
- 
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -68,83 +74,71 @@ const items = [
 ];
 
 export default function ProductList() {
-  const products = useSelector((state)=>state.product.products);
-  const totalItems = useSelector((state)=>state.product.totalItems);
+  const products = useSelector((state) => state.product.products);
+  const totalItems = useSelector((state) => state.product.totalItems);
   const categories = useSelector(selectCategories);
   const brands = useSelector(selectBrands);
   const dispatch = useDispatch();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   // const products = useSelector((state)=>state.product.products)
-  const [filter,setFilter] = useState({})
-  const [sort,setSort] = useState({})
-  const [page,setPage] = useState(1)
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({});
+  const [page, setPage] = useState(1);
 
+  const filters = [
+    {
+      id: "category",
+      name: "Category",
+      options: categories,
+    },
+    {
+      id: "brand",
+      name: "Brand",
+      options: brands,
+    },
+  ];
 
-  
-const filters = [
-  {
-    id: "category",
-    name: "Category",
-    options: categories
-  },
-  {
-    id: "brand",
-    name: "Brand",
-    options: brands
-  },
-  
-];
-
-
-
-
-
-  const handleFilter=(e,section,option)=>{
-    const newFilter = {...filter}
+  const handleFilter = (e, section, option) => {
+    const newFilter = { ...filter };
     //TODO : on server it will support multiple values
-  if(e.target.checked){
-    if(newFilter[section.id]){
-      newFilter[section.id].push(option.value)
-    }else{
-      newFilter[section.id] = [option.value]
+    if (e.target.checked) {
+      if (newFilter[section.id]) {
+        newFilter[section.id].push(option.value);
+      } else {
+        newFilter[section.id] = [option.value];
+      }
+    } else {
+      const index = newFilter[section.id].findIndex(
+        (el) => el === option.value
+      );
+      newFilter[section.id].splice(index, 1);
     }
-   
-    
-  }else{
-    const index = newFilter[section.id].findIndex(el=>el===option.value)
-     newFilter[section.id].splice(index,1)
-  }
 
-  console.log({newFilter}) 
-    setFilter(newFilter)
-    
-       
- }
-  const handleSort=(e,option)=>{
-    const sort = {_sort:option.sort,_order:option.order} 
-    console.log({sort}) 
-    setSort(sort)      
- }
-  const handlePage=(page)=>{
-    setPage(page)      
- }
+    console.log({ newFilter });
+    setFilter(newFilter);
+  };
+  const handleSort = (e, option) => {
+    const sort = { _sort: option.sort, _order: option.order };
+    console.log({ sort });
+    setSort(sort);
+  };
+  const handlePage = (page) => {
+    setPage(page);
+  };
 
+  useEffect(() => {
+    const pagination = { _page: page, _per_page: ITEAMS_PER_PAGE };
+    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+  }, [dispatch, filter, sort, page]);
 
+  useEffect(() => {
+    setPage(1);
+  }, [totalItems, sort]);
 
-
-  useEffect(()=>{
-       const pagination = {_page:page,_per_page:ITEAMS_PER_PAGE} 
-    dispatch(fetchProductsByFiltersAsync({filter,sort,pagination}))
-  },[dispatch,filter,sort,page])
-
-  useEffect(()=>{
-    setPage(1)
-  },[totalItems,sort])
-
-  useEffect(()=>{
-    dispatch(fetchCategoriesAsync())
-    dispatch(fetchBrandsAsync())
-  },[])
+  useEffect(() => {
+    dispatch(fetchCategoriesAsync());
+    dispatch(fetchBrandsAsync());
+  }, []);
 
   return (
     <div>
@@ -236,7 +230,9 @@ const filters = [
                                         defaultValue={option.value}
                                         type="checkbox"
                                         defaultChecked={option.checked}
-                                        onChange={(e)=>{handleFilter(e,section,option)}}
+                                        onChange={(e) => {
+                                          handleFilter(e, section, option);
+                                        }}
                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                       />
                                       <label
@@ -292,7 +288,7 @@ const filters = [
                           <MenuItem key={option.name}>
                             {({ focus }) => (
                               <p
-                                 onClick={(e)=>handleSort(e,option)}
+                                onClick={(e) => handleSort(e, option)}
                                 className={classNames(
                                   option.current
                                     ? "font-medium text-gray-900"
@@ -336,220 +332,217 @@ const filters = [
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                 {/* Filters */}
-                <SideFilter filters={filters} handleFilter={handleFilter}/>
+                <SideFilter filters={filters} handleFilter={handleFilter} />
 
                 {/* Product grid */}
-                <ProductGrid products={products}/>
+                <ProductGrid products={products} />
               </div>
             </section>
           </main>
         </div>
       </div>
 
-      
-      <Pagination handlePage={handlePage} page={page} setPage={setPage} totalItems={totalItems} />
+      <Pagination
+        handlePage={handlePage}
+        page={page}
+        setPage={setPage}
+        totalItems={totalItems}
+      />
     </div>
   );
 }
 
-
-
-
-
-const SideFilter = ({filters,handleFilter}) => {
-  
+const SideFilter = ({ filters, handleFilter }) => {
   return (
     <form className="hidden lg:block">
-                  <h3 className="sr-only">Categories</h3>
+      <h3 className="sr-only">Categories</h3>
 
-                  {filters.map((section) => (
-                    <Disclosure
-                      as="div"
-                      key={section.id}
-                      className="border-b border-gray-200 py-6"
-                    >
-                      {({ open }) => (
-                        <>
-                          <h3 className="-my-3 flow-root">
-                            <DisclosureButton className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                              <span className="font-medium text-gray-900">
-                                {section.name}
-                              </span>
-                              <span className="ml-6 flex items-center">
-                                {open ? (
-                                  <MinusIcon
-                                    className="h-5 w-5"
-                                    aria-hidden="true"
-                                  />
-                                ) : (
-                                  <PlusIcon
-                                    className="h-5 w-5"
-                                    aria-hidden="true"
-                                  />
-                                )}
-                              </span>
-                            </DisclosureButton>
-                          </h3>
-                          <DisclosurePanel className="pt-6"  >
-                            <div className="space-y-4">
-                              {section.options.map((option, optionIdx) => (
-                                <div
-                                  key={optionIdx}
-                                  className="flex items-center"
-                                >
-                                  <input
-                                    id={`filter-${section.id}-${optionIdx}`}
-                                    name={`${section.id}[]`}
-                                    defaultValue={option.value}
-                                    type="checkbox"
-                                    defaultChecked={option.checked}
-                                    onChange={(e)=>{handleFilter(e,section,option)}}
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                  />
-                                  <label
-                                    htmlFor={`filter-${section.id}-${optionIdx}`}
-                                    className="ml-3 text-sm text-gray-600"
-                                  >
-                                    {option.label}
-                                  </label>
-                                </div>
-                              ))}
-                            </div>
-                          </DisclosurePanel>
-                        </>
-                      )}
-                    </Disclosure>
+      {filters.map((section) => (
+        <Disclosure
+          as="div"
+          key={section.id}
+          className="border-b border-gray-200 py-6"
+        >
+          {({ open }) => (
+            <>
+              <h3 className="-my-3 flow-root">
+                <DisclosureButton className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                  <span className="font-medium text-gray-900">
+                    {section.name}
+                  </span>
+                  <span className="ml-6 flex items-center">
+                    {open ? (
+                      <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                    )}
+                  </span>
+                </DisclosureButton>
+              </h3>
+              <DisclosurePanel className="pt-6">
+                <div className="space-y-4">
+                  {section.options.map((option, optionIdx) => (
+                    <div key={optionIdx} className="flex items-center">
+                      <input
+                        id={`filter-${section.id}-${optionIdx}`}
+                        name={`${section.id}[]`}
+                        defaultValue={option.value}
+                        type="checkbox"
+                        defaultChecked={option.checked}
+                        onChange={(e) => {
+                          handleFilter(e, section, option);
+                        }}
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label
+                        htmlFor={`filter-${section.id}-${optionIdx}`}
+                        className="ml-3 text-sm text-gray-600"
+                      >
+                        {option.label}
+                      </label>
+                    </div>
                   ))}
-                </form>
-  )
-}
+                </div>
+              </DisclosurePanel>
+            </>
+          )}
+        </Disclosure>
+      ))}
+    </form>
+  );
+};
 
-
-const Pagination = ({handlePage,page,setPage,totalItems}) => {
-  const totalPages = Math.ceil(totalItems/ITEAMS_PER_PAGE)
+const Pagination = ({ handlePage, page, setPage, totalItems }) => {
+  const totalPages = Math.ceil(totalItems / ITEAMS_PER_PAGE);
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-        <div className="flex flex-1 justify-between sm:hidden">
-          <a
-            onClick={el=> handlePage(page>1? page-1 : page)}
-            className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Previous
-          </a>
-          <a
-            onClick={el=> handlePage(page<totalPages? page+1 : page)}
-            className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Next
-          </a>
+      <div className="flex flex-1 justify-between sm:hidden">
+        <a
+          onClick={(el) => handlePage(page > 1 ? page - 1 : page)}
+          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        >
+          Previous
+        </a>
+        <a
+          onClick={(el) => handlePage(page < totalPages ? page + 1 : page)}
+          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        >
+          Next
+        </a>
+      </div>
+      <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm text-gray-700">
+            Showing{" "}
+            <span className="font-medium">
+              {(page - 1) * ITEAMS_PER_PAGE + 1}
+            </span>{" "}
+            to{" "}
+            <span className="font-medium">
+              {page * ITEAMS_PER_PAGE > totalItems
+                ? totalItems
+                : page * ITEAMS_PER_PAGE}
+            </span>{" "}
+            of <span className="font-medium">{totalItems}</span> results
+          </p>
         </div>
-        <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm text-gray-700">
-              Showing <span className="font-medium">{(page-1)*ITEAMS_PER_PAGE+1}</span> to{" "}
-              <span className="font-medium">{page*ITEAMS_PER_PAGE>totalItems?totalItems:page*ITEAMS_PER_PAGE}</span> of{" "}
-              <span className="font-medium">{totalItems}</span> results
-            </p>
-          </div>
-          <div >
-            <nav
-              className="isolate inline-flex -space-x-px rounded-md shadow-sm"
-              aria-label="Pagination"
+        <div>
+          <nav
+            className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+            aria-label="Pagination"
+          >
+            <a
+              onClick={(el) => handlePage(page > 1 ? page - 1 : page)}
+              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
-              <a
-                onClick={el=> handlePage(page>1? page-1 : page)}
-                className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-              >
-                <span className="sr-only">Previous</span>
-                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-              </a>
-              {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
-              
-             {Array.from({length:totalPages}).map((e,index)=>(
+              <span className="sr-only">Previous</span>
+              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+            </a>
+            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
+
+            {Array.from({ length: totalPages }).map((e, index) => (
               <div
-              onClick={el=>handlePage(index+1)}
-              aria-current="page"
-              className={`cursor-pointer relative z-10 inline-flex items-center ${index+1===page?'bg-indigo-600  text-white':'  text-gray-900 bg-white'}  px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-            >
-              {index+1}
-            </div>
-             )
-             )}
-              
-              
-              <div
-                 onClick={el=> handlePage(page<totalPages? page+1 : page)}
-                className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                 key={index}
+                onClick={(el) => handlePage(index + 1)}
+                aria-current="page"
+                className={`cursor-pointer relative z-10 inline-flex items-center ${
+                  index + 1 === page
+                    ? "bg-indigo-600  text-white"
+                    : "  text-gray-900 bg-white"
+                }  px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
               >
-                <span className="sr-only">Next</span>
-                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+                {index + 1}
               </div>
-            </nav>
+            ))}
+
+            <div
+              onClick={(el) => handlePage(page < totalPages ? page + 1 : page)}
+              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            >
+              <span className="sr-only">Next</span>
+              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  );
+};
+const ProductGrid = ({ products }) => {
+  return (
+    <div className="lg:col-span-3">
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
+          <div className="mt-6 grid  grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+            {products.map((product) => (
+              <Link to={`/productdetail/${product.id}`} key={product.id}>
+                <div
+                  key={product.id}
+                  className="group p-1 relative border-solid border-2 rounded-lg"
+                >
+                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                    <img
+                      src={product.thumbnail}
+                      alt={product.images}
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    />
+                  </div>
+
+                  <div className="mt-4 flex justify-between pl-1 pr-1 pb-2">
+                    <div>
+                      <div className="text-sm text-gray-700 mr-2">
+                        <p href={product.href}>
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0"
+                          />
+                          {product.title}
+                        </p>
+                      </div>
+                      <div className="mt-1 text-sm text-gray-500">
+                        <StarIcon className="h-5 inline" />
+                        <p className="inline align-bottom">{product.rating}</p>
+                      </div>
+                      {/* <p className="mt-1 text-sm text-gray-500">{product.color}</p> */}
+                    </div>
+                    <div>
+                      <p className="text-sm block font-medium text-gray-900 ">
+                        $
+                        {Math.round(
+                          product.price * (1 - product.discountPercentage / 100)
+                        )}
+                      </p>
+                      <p className="text-sm block line-through font-medium text-gray-400">
+                        ${Math.round(product.price)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
-  )
-}
-const ProductGrid = ({products}) => {
-  return (
-    <div className="lg:col-span-3">
-                    <div className="bg-white">
-                      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
-                        <div className="mt-6 grid  grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                          {products.map((product) => (
-                            <Link to={`/productdetail/${product.id}`} key={product.id}>
-                              <div
-                                key={product.id}
-                                className="group p-1 relative border-solid border-2 rounded-lg"
-                              >
-                                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                  <img
-                                    src={product.thumbnail}
-                                    alt={product.images}
-                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                  />
-                                </div>
-
-                                <div className="mt-4 flex justify-between pl-1 pr-1 pb-2">
-                                  <div>
-                                    <div className="text-sm text-gray-700 mr-2" >
-                                      <p href={product.href}>
-                                        <span
-                                          aria-hidden="true"
-                                          className="absolute inset-0"
-                                        />
-                                        {product.title}
-                                      </p>
-                                    </div>
-                                    <div className="mt-1 text-sm text-gray-500">
-                                      <StarIcon className="h-5 inline" />
-                                      <p className="inline align-bottom">
-                                        {product.rating}
-                                      </p>
-                                    </div>
-                                    {/* <p className="mt-1 text-sm text-gray-500">{product.color}</p> */}
-                                  </div>
-                                  <div>
-                                    <p className="text-sm block font-medium text-gray-900 ">
-                                      $
-                                      {Math.round(
-                                        product.price *
-                                          (1 - product.discountPercentage / 100)
-                                      )}
-                                    </p>
-                                    <p className="text-sm block line-through font-medium text-gray-400">
-                                      ${Math.round(product.price)}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div> 
-                 </div>
-  )
-}
-
-
+    </div>
+  );
+};

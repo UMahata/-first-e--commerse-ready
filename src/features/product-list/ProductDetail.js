@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { addToCartAsync } from '../Cart/cartSlice'
 import { selectLoggedInUser } from '../auth/AuthSlice'
 
+
 const product = {
   name: 'Basic Tee 6-Pack',
   price: '$192',
@@ -81,7 +82,9 @@ const ProductDetail = () => {
 
   const handleCart=(e)=>{
     e.preventDefault()
-     dispatch(addToCartAsync({...productData,quantity:1,user:user.id}))
+    const newItem = {...productData,quantity:1,user:user.id}
+    delete newItem['ad'];
+     dispatch(addToCartAsync(newItem))
   }
   
 
@@ -124,7 +127,7 @@ const ProductDetail = () => {
         </nav>
 
         {/* Image gallery */}
-        <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+        <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
             <img
               src={productData.images[0]}
@@ -149,13 +152,13 @@ const ProductDetail = () => {
             </div>
           </div>
          
-          <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+          {productData.images[3] && <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
               src={productData.images[3]}
               alt={productData.title}
               className="h-full w-full object-cover object-center"
             />
-          </div>
+          </div>}
         </div>
 
         {/* Product info */}
