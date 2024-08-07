@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchAllProducts ,fetchBrands,fetchCategories,fetchProductById,fetchProductsByFilters} from './ProductListAPI';
+import { createProduct, fetchAllProducts ,fetchBrands,fetchCategories,fetchProductById,fetchProductsByFilters, updateProduct} from './ProductListAPI';
 
 const initialState = {
   products: [],
@@ -54,20 +54,29 @@ export const fetchBrandsAsync = createAsyncThunk(
        return (response.data);
   }
 );
+export const createProductAsync = createAsyncThunk(
+  'product/createProduct',
+  async (product) => {
+    const response = await createProduct(product);
+       return (response.data);
+  }
+);
+export const updateProductAsync = createAsyncThunk(
+  'product/updateProduct',
+  async (update) => {
+    const response = await updateProduct(update);
+       return (response.data);
+  }
+);
 
 export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    ClearSelectedProduct: (state) => {
+      state.selectedProduct = null;
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
+ 
   },
   extraReducers: (builder) => {
     builder
@@ -112,10 +121,27 @@ export const productSlice = createSlice({
         
         state.selectedProduct = action.payload;
       })
+      .addCase(createProductAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(createProductAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        
+        state.products.push(action.payload) ;
+      })
+      .addCase(updateProductAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateProductAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        
+        const index = state.products.findIndex(product=>product.id === action.payload.id)
+        state.products[index]= action.payload
+      })
   },
 });
 
-export const { increment} = productSlice.actions;
+export const { ClearSelectedProduct} = productSlice.actions;
 export const selectBrands =(state)=>state.product.brands
 export const selectCategories =(state)=>state.product.categories
 export const selectedProductById =(state)=>state.product.selectedProduct

@@ -9,7 +9,7 @@ import {
   selectBrands,
   selectCategories,
   selectCount,
-} from "./ProductListSlice";
+} from "../product-list/ProductListSlice";
 
 import { useEffect, useState } from "react";
 import {
@@ -73,7 +73,7 @@ const items = [
   },
 ];
 
-export default function ProductList() {
+export default function AdminProductList() {
   const products = useSelector((state) => state.product.products);
   const totalItems = useSelector((state) => state.product.totalItems);
   const categories = useSelector(selectCategories);
@@ -329,13 +329,21 @@ export default function ProductList() {
               <h2 id="products-heading" className="sr-only">
                 Products
               </h2>
+              <div>
+                      <Link to='/admin/product-form'
+                      className="rounded-md m-2 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      >Add New Product</Link>
+                    </div>
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                 {/* Filters */}
+                
                 <SideFilter filters={filters} handleFilter={handleFilter} />
+                
 
                 {/* Product grid */}
                 <ProductGrid products={products} />
+                
               </div>
             </section>
           </main>
@@ -536,11 +544,21 @@ const ProductGrid = ({ products }) => {
                         ${Math.round(product.price)}
                       </p>
                     </div>
+                  
                   </div>
                   { product.deleted && <div>
                     <p className="text-sm text-red-400">Product Deletd</p>
                    </div>}
+                
                 </div>
+                <div
+                 
+                 >
+                  <Link to={`/admin/product-form/edit/${product.id}`}>
+                    <button className="rounded-md m-2 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >Edit Product</button>
+                   </Link>
+                  </div>
               </Link>
             ))}
           </div>

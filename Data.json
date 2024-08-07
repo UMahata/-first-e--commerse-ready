@@ -615,9 +615,9 @@
       "title": "Annibale Colombo Bed",
       "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
       "category": "furniture",
-      "price": 1899.99,
-      "discountPercentage": 0.29,
-      "rating": 4.14,
+      "price": 3899,
+      "discountPercentage": 29,
+      "rating": 0,
       "stock": 47,
       "tags": [
         "furniture",
@@ -670,7 +670,8 @@
         "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/2.png",
         "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/3.png"
       ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/thumbnail.png"
+      "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/thumbnail.png",
+      "deleted": true
     },
     {
       "id": "12",
@@ -6007,6 +6008,23 @@
         "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/3.png"
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/thumbnail.png"
+    },
+    {
+      "id": "af4f",
+      "title": "my product",
+      "description": "added",
+      "price": "2",
+      "discountPercentage": "2",
+      "stock": "2",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png",
+      "brand": "Dell",
+      "category": "laptops",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png",
+        "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png",
+        "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png"
+      ],
+      "rating": 0
     }
   ],
   "categories": [
@@ -6270,6 +6288,7 @@
       "id": "f68e",
       "email": "pradipmahata10@gmail.com",
       "password": "Rc@7897987987",
+      "role": "user",
       "addresses": [
         {
           "name": "utpal mahta2",
@@ -6297,7 +6316,26 @@
       "id": "46a6",
       "email": "pradipmahata10@gmail.com",
       "password": "Rc@7897987987",
+      "role": "user",
       "addresses": []
+    },
+    {
+      "id": "3d27",
+      "email": "admin5@gmail.com",
+      "password": "Khy@67796795899",
+      "addresses": [
+        {
+          "name": "UTPAL admin",
+          "email": "mahatautpalrc5@gmail.com",
+          "phoneNumber": "09732982213",
+          "country": "India",
+          "street": "MANIKPARA, MANIKPARA BAZAR",
+          "city": "KHARAGPUR",
+          "state": "RAMKRISHNA BAZAR",
+          "pincode": "721513"
+        }
+      ],
+      "role": "admin"
     }
   ],
   "cart": [
@@ -6463,6 +6501,851 @@
       "paymentMethod": "cash",
       "selectedAddress": {
         "name": "UTPAL",
+        "email": "mahatautpalrc5@gmail.com",
+        "phoneNumber": "09732982213",
+        "country": "India",
+        "street": "MANIKPARA, MANIKPARA BAZAR",
+        "city": "KHARAGPUR",
+        "state": "RAMKRISHNA BAZAR",
+        "pincode": "721513"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "b8b9",
+      "cartItems": [
+        {
+          "id": "10",
+          "title": "Gucci Bloom Eau de",
+          "description": "Gucci Bloom by Gucci is a floral and captivating fragrance, with notes of tuberose, jasmine, and Rangoon creeper. It's a modern and romantic scent.",
+          "category": "fragrances",
+          "price": 79.99,
+          "discountPercentage": 8.9,
+          "rating": 2.69,
+          "stock": 93,
+          "tags": [
+            "fragrances",
+            "perfumes"
+          ],
+          "brand": "Gucci",
+          "sku": "FFKZ6HOF",
+          "weight": 10,
+          "dimensions": {
+            "width": 22.28,
+            "height": 17.81,
+            "depth": 27.18
+          },
+          "warrantyInformation": "No warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Great value for money!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Aria Parker",
+              "reviewerEmail": "aria.parker@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Excellent quality!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Natalie Harris",
+              "reviewerEmail": "natalie.harris@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Fast shipping!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Ava Harris",
+              "reviewerEmail": "ava.harris@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "No return policy",
+          "minimumOrderQuantity": 10,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.620Z",
+            "updatedAt": "2024-05-23T08:56:21.620Z",
+            "barcode": "8232190382069",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/fragrances/Gucci%20Bloom%20Eau%20de/1.png",
+            "https://cdn.dummyjson.com/products/images/fragrances/Gucci%20Bloom%20Eau%20de/2.png",
+            "https://cdn.dummyjson.com/products/images/fragrances/Gucci%20Bloom%20Eau%20de/3.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Gucci%20Bloom%20Eau%20de/thumbnail.png",
+          "quantity": 1,
+          "user": "3d27"
+        }
+      ],
+      "user": {
+        "id": "3d27",
+        "email": "admin5@gmail.com",
+        "password": "Khy@67796795899",
+        "addresses": [
+          {
+            "name": "UTPAL admin",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ],
+        "role": "admin"
+      },
+      "totalAmount": 79.99,
+      "totalItems": 1,
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "UTPAL admin",
+        "email": "mahatautpalrc5@gmail.com",
+        "phoneNumber": "09732982213",
+        "country": "India",
+        "street": "MANIKPARA, MANIKPARA BAZAR",
+        "city": "KHARAGPUR",
+        "state": "RAMKRISHNA BAZAR",
+        "pincode": "721513"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "f981",
+      "cartItems": [
+        {
+          "id": "4",
+          "title": "Red Lipstick",
+          "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+          "category": "beauty",
+          "price": 12.99,
+          "discountPercentage": 19.03,
+          "rating": 2.51,
+          "stock": 68,
+          "tags": [
+            "beauty",
+            "lipstick"
+          ],
+          "brand": "Chic Cosmetics",
+          "sku": "O5IF1NTA",
+          "weight": 5,
+          "dimensions": {
+            "width": 14.37,
+            "height": 13.94,
+            "depth": 14.6
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Leo Rivera",
+              "reviewerEmail": "leo.rivera@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Oscar Powers",
+              "reviewerEmail": "oscar.powers@x.dummyjson.com"
+            },
+            {
+              "rating": 5,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Carter Rivera",
+              "reviewerEmail": "carter.rivera@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "90 days return policy",
+          "minimumOrderQuantity": 6,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "9444582199406",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
+          "quantity": 1,
+          "user": "f68e"
+        },
+        {
+          "id": "8",
+          "title": "Dior J'adore",
+          "description": "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+          "category": "fragrances",
+          "price": 89.99,
+          "discountPercentage": 17.44,
+          "rating": 3.31,
+          "stock": 91,
+          "tags": [
+            "fragrances",
+            "perfumes"
+          ],
+          "brand": "Dior",
+          "sku": "E70NB03B",
+          "weight": 10,
+          "dimensions": {
+            "width": 21.51,
+            "height": 7,
+            "depth": 26.51
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Fast shipping!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Zoe Nicholson",
+              "reviewerEmail": "zoe.nicholson@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Excellent quality!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Addison Wright",
+              "reviewerEmail": "addison.wright@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Would buy again!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Clara Berry",
+              "reviewerEmail": "clara.berry@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "7 days return policy",
+          "minimumOrderQuantity": 8,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "0887083199279",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/1.png",
+            "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/2.png",
+            "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/3.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/thumbnail.png",
+          "quantity": 1,
+          "user": "f68e"
+        }
+      ],
+      "user": {
+        "id": "f68e",
+        "email": "pradipmahata10@gmail.com",
+        "password": "Rc@7897987987",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "utpal mahta2",
+            "email": "mahatautpaclrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          },
+          {
+            "name": "UTPAL3",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ]
+      },
+      "totalAmount": 102.97999999999999,
+      "totalItems": 2,
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "utpal mahta2",
+        "email": "mahatautpaclrc5@gmail.com",
+        "phoneNumber": "09732982213",
+        "country": "India",
+        "street": "MANIKPARA, MANIKPARA BAZAR",
+        "city": "KHARAGPUR",
+        "state": "RAMKRISHNA BAZAR",
+        "pincode": "721513"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "bee3",
+      "cartItems": [
+        {
+          "id": "4",
+          "title": "Red Lipstick",
+          "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+          "category": "beauty",
+          "price": 12.99,
+          "discountPercentage": 19.03,
+          "rating": 2.51,
+          "stock": 68,
+          "tags": [
+            "beauty",
+            "lipstick"
+          ],
+          "brand": "Chic Cosmetics",
+          "sku": "O5IF1NTA",
+          "weight": 5,
+          "dimensions": {
+            "width": 14.37,
+            "height": 13.94,
+            "depth": 14.6
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Leo Rivera",
+              "reviewerEmail": "leo.rivera@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Oscar Powers",
+              "reviewerEmail": "oscar.powers@x.dummyjson.com"
+            },
+            {
+              "rating": 5,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Carter Rivera",
+              "reviewerEmail": "carter.rivera@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "90 days return policy",
+          "minimumOrderQuantity": 6,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "9444582199406",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
+          "quantity": 1,
+          "user": "f68e"
+        },
+        {
+          "id": "8",
+          "title": "Dior J'adore",
+          "description": "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+          "category": "fragrances",
+          "price": 89.99,
+          "discountPercentage": 17.44,
+          "rating": 3.31,
+          "stock": 91,
+          "tags": [
+            "fragrances",
+            "perfumes"
+          ],
+          "brand": "Dior",
+          "sku": "E70NB03B",
+          "weight": 10,
+          "dimensions": {
+            "width": 21.51,
+            "height": 7,
+            "depth": 26.51
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Fast shipping!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Zoe Nicholson",
+              "reviewerEmail": "zoe.nicholson@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Excellent quality!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Addison Wright",
+              "reviewerEmail": "addison.wright@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Would buy again!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Clara Berry",
+              "reviewerEmail": "clara.berry@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "7 days return policy",
+          "minimumOrderQuantity": 8,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "0887083199279",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/1.png",
+            "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/2.png",
+            "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/3.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/thumbnail.png",
+          "quantity": 1,
+          "user": "f68e"
+        }
+      ],
+      "user": {
+        "id": "f68e",
+        "email": "pradipmahata10@gmail.com",
+        "password": "Rc@7897987987",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "utpal mahta2",
+            "email": "mahatautpaclrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          },
+          {
+            "name": "UTPAL3",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ]
+      },
+      "totalAmount": 102.97999999999999,
+      "totalItems": 2,
+      "status": "pending"
+    },
+    {
+      "id": "ba16",
+      "cartItems": [
+        {
+          "id": "4",
+          "title": "Red Lipstick",
+          "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+          "category": "beauty",
+          "price": 12.99,
+          "discountPercentage": 19.03,
+          "rating": 2.51,
+          "stock": 68,
+          "tags": [
+            "beauty",
+            "lipstick"
+          ],
+          "brand": "Chic Cosmetics",
+          "sku": "O5IF1NTA",
+          "weight": 5,
+          "dimensions": {
+            "width": 14.37,
+            "height": 13.94,
+            "depth": 14.6
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Leo Rivera",
+              "reviewerEmail": "leo.rivera@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Oscar Powers",
+              "reviewerEmail": "oscar.powers@x.dummyjson.com"
+            },
+            {
+              "rating": 5,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Carter Rivera",
+              "reviewerEmail": "carter.rivera@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "90 days return policy",
+          "minimumOrderQuantity": 6,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "9444582199406",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
+          "quantity": 1,
+          "user": "f68e"
+        }
+      ],
+      "user": {
+        "id": "f68e",
+        "email": "pradipmahata10@gmail.com",
+        "password": "Rc@7897987987",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "utpal mahta2",
+            "email": "mahatautpaclrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          },
+          {
+            "name": "UTPAL3",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ]
+      },
+      "totalAmount": 12.99,
+      "totalItems": 1,
+      "status": "pending"
+    },
+    {
+      "id": "8576",
+      "cartItems": [
+        {
+          "id": "13",
+          "title": "Bedside Table African Cherry",
+          "description": "The Bedside Table in African Cherry is a stylish and functional addition to your bedroom, providing convenient storage space and a touch of elegance.",
+          "category": "furniture",
+          "price": 299.99,
+          "discountPercentage": 9.58,
+          "rating": 4.48,
+          "stock": 16,
+          "tags": [
+            "furniture",
+            "bedside tables"
+          ],
+          "brand": "Furniture Co.",
+          "sku": "OWPLTZYX",
+          "weight": 10,
+          "dimensions": {
+            "width": 25.43,
+            "height": 20.2,
+            "depth": 24.95
+          },
+          "warrantyInformation": "6 months warranty",
+          "shippingInformation": "Ships in 1-2 business days",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Very happy with my purchase!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "John Doe",
+              "reviewerEmail": "john.doe@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Highly recommended!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Avery Carter",
+              "reviewerEmail": "avery.carter@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Evelyn Sanchez",
+              "reviewerEmail": "evelyn.sanchez@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "No return policy",
+          "minimumOrderQuantity": 5,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.620Z",
+            "updatedAt": "2024-05-23T08:56:21.620Z",
+            "barcode": "2913244159666",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/furniture/Bedside%20Table%20African%20Cherry/1.png",
+            "https://cdn.dummyjson.com/products/images/furniture/Bedside%20Table%20African%20Cherry/2.png",
+            "https://cdn.dummyjson.com/products/images/furniture/Bedside%20Table%20African%20Cherry/3.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Bedside%20Table%20African%20Cherry/thumbnail.png",
+          "quantity": 1,
+          "user": "3d27"
+        }
+      ],
+      "user": {
+        "id": "3d27",
+        "email": "admin5@gmail.com",
+        "password": "Khy@67796795899",
+        "addresses": [
+          {
+            "name": "UTPAL admin",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ],
+        "role": "admin"
+      },
+      "totalAmount": 299.99,
+      "totalItems": 1,
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "UTPAL admin",
+        "email": "mahatautpalrc5@gmail.com",
+        "phoneNumber": "09732982213",
+        "country": "India",
+        "street": "MANIKPARA, MANIKPARA BAZAR",
+        "city": "KHARAGPUR",
+        "state": "RAMKRISHNA BAZAR",
+        "pincode": "721513"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "1b56",
+      "cartItems": [
+        {
+          "id": "14",
+          "title": "Knoll Saarinen Executive Conference Chair",
+          "description": "The Knoll Saarinen Executive Conference Chair is a modern and ergonomic chair, perfect for your office or conference room with its timeless design.",
+          "category": "furniture",
+          "price": 499.99,
+          "discountPercentage": 15.23,
+          "rating": 4.11,
+          "stock": 47,
+          "tags": [
+            "furniture",
+            "office chairs"
+          ],
+          "brand": "Knoll",
+          "sku": "RKHVJ4FE",
+          "weight": 3,
+          "dimensions": {
+            "width": 16.59,
+            "height": 21.46,
+            "depth": 29.07
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 3-5 business days",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 4,
+              "comment": "Very happy with my purchase!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Leah Gutierrez",
+              "reviewerEmail": "leah.gutierrez@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Would buy again!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Nolan Gonzalez",
+              "reviewerEmail": "nolan.gonzalez@x.dummyjson.com"
+            },
+            {
+              "rating": 2,
+              "comment": "Waste of money!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Stella Morris",
+              "reviewerEmail": "stella.morris@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "30 days return policy",
+          "minimumOrderQuantity": 5,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.620Z",
+            "updatedAt": "2024-05-23T08:56:21.620Z",
+            "barcode": "0726316339746",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/1.png",
+            "https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/2.png",
+            "https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/3.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/thumbnail.png",
+          "quantity": 1,
+          "user": "3d27"
+        }
+      ],
+      "user": {
+        "id": "3d27",
+        "email": "admin5@gmail.com",
+        "password": "Khy@67796795899",
+        "addresses": [
+          {
+            "name": "UTPAL admin",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ],
+        "role": "admin"
+      },
+      "totalAmount": 499.99,
+      "totalItems": 1,
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "UTPAL admin",
+        "email": "mahatautpalrc5@gmail.com",
+        "phoneNumber": "09732982213",
+        "country": "India",
+        "street": "MANIKPARA, MANIKPARA BAZAR",
+        "city": "KHARAGPUR",
+        "state": "RAMKRISHNA BAZAR",
+        "pincode": "721513"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "c61e",
+      "cartItems": [
+        {
+          "id": "4",
+          "title": "Red Lipstick",
+          "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+          "category": "beauty",
+          "price": 12.99,
+          "discountPercentage": 19.03,
+          "rating": 2.51,
+          "stock": 68,
+          "tags": [
+            "beauty",
+            "lipstick"
+          ],
+          "brand": "Chic Cosmetics",
+          "sku": "O5IF1NTA",
+          "weight": 5,
+          "dimensions": {
+            "width": 14.37,
+            "height": 13.94,
+            "depth": 14.6
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Leo Rivera",
+              "reviewerEmail": "leo.rivera@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Oscar Powers",
+              "reviewerEmail": "oscar.powers@x.dummyjson.com"
+            },
+            {
+              "rating": 5,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Carter Rivera",
+              "reviewerEmail": "carter.rivera@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "90 days return policy",
+          "minimumOrderQuantity": 6,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "9444582199406",
+            "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
+          "quantity": 1,
+          "user": "f68e"
+        }
+      ],
+      "user": {
+        "id": "f68e",
+        "email": "pradipmahata10@gmail.com",
+        "password": "Rc@7897987987",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "utpal mahta2",
+            "email": "mahatautpaclrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          },
+          {
+            "name": "UTPAL3",
+            "email": "mahatautpalrc5@gmail.com",
+            "phoneNumber": "09732982213",
+            "country": "India",
+            "street": "MANIKPARA, MANIKPARA BAZAR",
+            "city": "KHARAGPUR",
+            "state": "RAMKRISHNA BAZAR",
+            "pincode": "721513"
+          }
+        ]
+      },
+      "totalAmount": 12.99,
+      "totalItems": 1,
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "UTPAL3",
         "email": "mahatautpalrc5@gmail.com",
         "phoneNumber": "09732982213",
         "country": "India",

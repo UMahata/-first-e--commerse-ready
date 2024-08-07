@@ -67,6 +67,9 @@ const UserProfile = () => {
                 <h4 className="text-xl font-bold  text text-red-900  ml-3">
                  Email address: {user.email}
                 </h4>
+                {user.role==="admin" && <h4 className="text-xl font-bold  text text-red-900  ml-3">
+                 role: {user.role}
+                </h4>}
               </div>
             
             
