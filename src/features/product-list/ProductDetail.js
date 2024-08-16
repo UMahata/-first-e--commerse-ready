@@ -4,7 +4,7 @@ import { Radio, RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProductByIdAsync, selectedProductById } from './ProductListSlice'
 import { useParams } from 'react-router-dom'
-import { addToCartAsync } from '../Cart/cartSlice'
+import { addToCartAsync, selectIteams } from '../Cart/cartSlice'
 import { selectLoggedInUser } from '../auth/AuthSlice'
 
 
@@ -72,8 +72,10 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState(sizes[2])
   const user = useSelector(selectLoggedInUser)
   const dispatch = useDispatch()
+  const items = useSelector(selectIteams)
   const params = useParams()
   const productData = useSelector(selectedProductById)
+  console.log(items)
   // const[product,getProduct] = useState({})
   // if(quickdata){
   //   getProduct(quickdata)
