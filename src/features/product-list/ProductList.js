@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
+  allProducts,
   fetchAllProductsAsync,
   fetchBrandsAsync,
   fetchCategoriesAsync,
@@ -9,6 +10,7 @@ import {
   selectBrands,
   selectCategories,
   selectCount,
+  selectedProductListStatus,
 } from "./ProductListSlice";
 
 import { useEffect, useState } from "react";
@@ -39,6 +41,8 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { initializeUseSelector } from "react-redux/es/hooks/useSelector";
 import { ITEAMS_PER_PAGE } from "../../app/constants";
 import Pagination from "../common/Pagination";
+import Spinner from "../common/Spinner";
+import { Blocks } from "react-loader-spinner";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -75,16 +79,21 @@ const items = [
 ];
 
 export default function ProductList() {
-  const products = useSelector((state) => state.product.products);
+  const dispatch = useDispatch();
+  
+  const products = useSelector(allProducts);
   const totalItems = useSelector((state) => state.product.totalItems);
+  
   const categories = useSelector(selectCategories);
   const brands = useSelector(selectBrands);
-  const dispatch = useDispatch();
+  const status = useSelector(selectedProductListStatus);
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   // const products = useSelector((state)=>state.product.products)
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState({});
   const [page, setPage] = useState(1);
+  
 
   const filters = [
     {
@@ -128,8 +137,10 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    const pagination = { _page: page, _per_page: ITEAMS_PER_PAGE };
+    const pagination = { _page: page, _limit: ITEAMS_PER_PAGE };
     dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+   
+
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {
@@ -137,12 +148,14 @@ export default function ProductList() {
   }, [totalItems, sort]);
 
   useEffect(() => {
+   
     dispatch(fetchCategoriesAsync());
     dispatch(fetchBrandsAsync());
   }, []);
 
   return (
     <div>
+    
       <div className="bg-white">
         <div>
           {/* Mobile filter dialog */}
@@ -336,7 +349,7 @@ export default function ProductList() {
                 <SideFilter filters={filters} handleFilter={handleFilter} />
 
                 {/* Product grid */}
-                <ProductGrid products={products} />
+                <ProductGrid products={products} status={status}/>
               </div>
             </section>
           </main>
@@ -415,12 +428,23 @@ const SideFilter = ({ filters, handleFilter }) => {
 };
 
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products,status }) => {
   return (
     <div className="lg:col-span-3">
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
+        {status ==="loading"?<Blocks
+        height="80"
+        width="80"
+        color="rgb(79, 70, 229)"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        className="mx-auto"
+        visible={true}
+        />:null}
           <div className="mt-6 grid  grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+       
             {products.map((product) => (
               <Link to={`/productdetail/${product.id}`} key={product.id}>
                 <div

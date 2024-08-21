@@ -9,7 +9,6 @@ const UserOrders = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const userOrders = useSelector(selectUserOrders);
-  console.log(userOrders);
 
   useEffect(() => {
     dispatch(fetchLoggedInUserOrdersAsync(user.id));
@@ -17,28 +16,28 @@ const UserOrders = () => {
   return (
     <>
       <div>
-        {userOrders.map((order) => (
+        {userOrders.map((order,i) => (
           <div>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white mt-20">
               <div className="flex flex-col ">
                 <h1 className="text-3xl font-bold  m-3">
-                  #Order Number : {order.id}{" "}
+                  #Order Serial : {i+1}{" "}
                 </h1>
 
                 <h4 className="text-xl font-bold  text text-red-900  ml-3">
-                  #Order Number : {order.id}{" "}
+                  #Order ID : {order.id}{" "}
                 </h4>
               </div>
               <hr />
               <div className="pt-10">
                 <div className="flow-root">
                   <ul role="list" className="-my-6 divide-y divide-gray-200">
-                    {order.cartItems.map((item) => (
+                    {order.items.map((item) => (
                       <li key={item.id} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            src={item.thumbnail}
-                            alt={item.title}
+                            src={item.product.thumbnail}
+                            alt={item.product.title}
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
@@ -47,12 +46,12 @@ const UserOrders = () => {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={item.href}>{item.title}</a>
+                                <a href={item.product.href}>{item.product.title}</a>
                               </h3>
-                              <p className="ml-4">${item.price}</p>
+                              <p className="ml-4">${item.product.price}</p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
-                              {item.brand}
+                              {item.product.brand}
                             </p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">

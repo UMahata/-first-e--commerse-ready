@@ -11,11 +11,7 @@ const AdminOrders = () => {
        const totalOrdersNumber = useSelector(selectTotalOrders)
        const [editableOrderId,setEditableOrderId]= useState(-1)
        
-       
-      
-       
- 
-     
+       console.log(orders)
        
        const handleEdit=(order)=>{
         setEditableOrderId(order.id)
@@ -69,15 +65,15 @@ const AdminOrders = () => {
     </thead>
     <tbody>
       {orders.map((order)=>(
-        order.cartItems.map((item)=>(<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        order.items.map((item)=>(<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <th
               key ={item.id} 
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
-              {<img className='h-10 rounded-full inline mr-2 ' src={item.thumbnail}alt="" />}{item.title}
+              {<img className='h-10 rounded-full inline mr-2 ' src={item.product.thumbnail}alt="" />}{item.product.title}
             </th>
-            <td className="px-10 py-4 ">{item.id}</td>
+            <td className="px-10 py-4 ">{item.product.id}</td>
             <td className="px-6 py-4">{order.totalAmount.toFixed(2)}</td>
             {editableOrderId === order.id? 
              ( <select name="" id="" onChange={e=>handleUpdate(e,order)}>

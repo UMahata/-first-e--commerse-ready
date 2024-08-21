@@ -57,7 +57,7 @@ const Checkout = () => {
   const currentOrder = useSelector(selectCurrentOrder)
 
   const totalAmount = cartItems.reduce(
-    (amount, iteam) => amount + iteam.price * iteam.quantity,
+    (amount, item) => amount + item.product.price * item.quantity,
     0
   );
   const totalItems = cartItems.reduce(
@@ -66,7 +66,7 @@ const Checkout = () => {
   );
 
   function handleQuantity(e, item) {
-    dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
+    dispatch(updateCartAsync({ id:item.id, quantity: +e.target.value }));
   }
   const handleRemove = (id) => {
     dispatch(deleteItemFromCartAsync(id));
@@ -83,7 +83,8 @@ const Checkout = () => {
   const handleOrder=(e)=>{
     setSelectedAddress(user.addresses[e.target.value])
     setpaymentMethod(e.target.value)
-    const order = {cartItems, user, totalAmount,totalItems,paymentMethod,selectedAddress,status: 'pending'}
+    console.log(cartItems)
+    const order = {items:cartItems, user:user.id, totalAmount,totalItems,paymentMethod,selectedAddress,status: 'pending'}
     dispatch(createOrderAsync(order))
     
   }
@@ -431,8 +432,8 @@ const Checkout = () => {
                       <li key={item.id} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            src={item.thumbnail}
-                            alt={item.title}
+                            src={item.product.thumbnail}
+                            alt={item.product.title}
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
@@ -441,12 +442,12 @@ const Checkout = () => {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={item.href}>{item.title}</a>
+                                <a href={item.product.href}>{item.product.title}</a>
                               </h3>
-                              <p className="ml-4">${item.price}</p>
+                              <p className="ml-4">${item.product.price}</p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
-                              {item.brand}
+                              {item.product.brand}
                             </p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">
@@ -469,7 +470,7 @@ const Checkout = () => {
 
                             <div className="flex">
                               <button
-                                onClick={(e) => handleRemove(item.id)}
+                                onClick={(e) => handleRemove(item.product.id)}
                                 type="button"
                                 className="font-medium text-indigo-600 hover:text-indigo-500"
                               >

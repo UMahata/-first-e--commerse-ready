@@ -6,6 +6,7 @@ import { fetchProductByIdAsync, selectedProductById } from './ProductListSlice'
 import { useParams } from 'react-router-dom'
 import { addToCartAsync, selectIteams } from '../Cart/cartSlice'
 import { selectLoggedInUser } from '../auth/AuthSlice'
+import { useAlert } from "react-alert";
 
 
 const product = {
@@ -75,18 +76,23 @@ const ProductDetail = () => {
   const items = useSelector(selectIteams)
   const params = useParams()
   const productData = useSelector(selectedProductById)
-  console.log(items)
-  // const[product,getProduct] = useState({})
-  // if(quickdata){
-  //   getProduct(quickdata)
-  // }
+  const alert = useAlert();
+
  
 
   const handleCart=(e)=>{
     e.preventDefault()
-    const newItem = {...productData,quantity:1,user:user.id}
-    delete newItem['ad'];
+    if(!items.some(item=>item.product.id === productData.id)){
+      const newItem = {product:productData.id,quantity:1,user:user.id}
+  
      dispatch(addToCartAsync(newItem))
+     alert.success('Item added to Cart !')
+    }else{
+    
+      alert.error('Item Already added !')
+
+    }
+    
   }
   
 
@@ -301,7 +307,8 @@ const ProductDetail = () => {
               >
                 Add to Cart
               </button>
-            </form>
+             
+                  </form>
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">

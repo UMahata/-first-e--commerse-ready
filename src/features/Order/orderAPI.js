@@ -34,11 +34,14 @@ export function fetchAllOrders(pagination) {
  }
 
 return new Promise( async(resolve) =>{
-//  const url =`http://localhost:8080/products/?${queryString}`
-console.log( queryString)
+ const url =`http://localhost:8080/orders/?${queryString}`
+ console.log(url)
+
   const response = await fetch('http://localhost:8080/orders/?'+queryString)
   const data = await response.json()
-  resolve({data: {orders:data.data, totalOrders: data.items}})
+  const totalItems = await response.headers.get('X-Total-Count');
+  
+    resolve({ data: { products: data, totalItems: +totalItems } });
   
 }
   

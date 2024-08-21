@@ -127,7 +127,7 @@ export default function AdminProductList() {
   };
 
   useEffect(() => {
-    const pagination = { _page: page, _per_page: ITEAMS_PER_PAGE };
+    const pagination = { _page: page, _limit: ITEAMS_PER_PAGE };
     dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
   }, [dispatch, filter, sort, page]);
 
