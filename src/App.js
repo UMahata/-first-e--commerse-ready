@@ -24,7 +24,7 @@ import UserOrders from './features/user/components/UserOrders';
 import UserOrdersPage from './Pages/UserOrdersPage';
 import UserProfile from './features/user/components/UserProfile';
 import UserProfilePage from './Pages/UserProfilePage';
-import { fetchLoggedInUserAsync, fetchLoggedInUserOrdersAsync } from './features/user/UserSlice';
+import { fetchLoggedInUserAsync } from './features/user/UserSlice';
 import { selectLoggedInUser } from './features/auth/AuthSlice';
 import Logout from './features/auth/components/Logout';
 import ForgotPasswordPage from './Pages/ForgotPasswordPage';
@@ -123,8 +123,8 @@ function App() {
   
   useEffect(()=>{
     if(user){
-      dispatch(fetchIteamsByIdAsync(user.id))
-      dispatch(fetchLoggedInUserAsync(user.id))
+      dispatch(fetchIteamsByIdAsync())
+      dispatch(fetchLoggedInUserAsync())
     }
   },[dispatch,user])
 

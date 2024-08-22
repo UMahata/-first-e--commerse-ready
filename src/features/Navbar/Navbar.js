@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { selectIteams } from '../Cart/cartSlice'
 import { fetchLoggedInUser } from '../user/UserAPI'
 import { selectLoggedInUser } from '../auth/AuthSlice'
+import { selectUserInfo } from '../user/UserSlice'
   
   const user = {
     name: 'Tom Cook',
@@ -43,13 +44,13 @@ import { selectLoggedInUser } from '../auth/AuthSlice'
 const Navbar = ({children}) => {
 
   const cartItems = useSelector(selectIteams)
-  const userdata = useSelector(selectLoggedInUser)
+  const userdata = useSelector(selectUserInfo)
   
 
   return (
     <>
       
-      <div className="min-h-full">
+      {userdata && <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
             <>
@@ -221,7 +222,7 @@ const Navbar = ({children}) => {
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{children}</div>
         </main>
-      </div>
+      </div>}
     </>
   )
 }

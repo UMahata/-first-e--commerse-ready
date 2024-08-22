@@ -71,7 +71,7 @@ function classNames(...classes) {
 const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0])
   const [selectedSize, setSelectedSize] = useState(sizes[2])
-  const user = useSelector(selectLoggedInUser)
+
   const dispatch = useDispatch()
   const items = useSelector(selectIteams)
   const params = useParams()
@@ -83,7 +83,7 @@ const ProductDetail = () => {
   const handleCart=(e)=>{
     e.preventDefault()
     if(!items.some(item=>item.product.id === productData.id)){
-      const newItem = {product:productData.id,quantity:1,user:user.id}
+      const newItem = {product:productData.id,quantity:1}
   
      dispatch(addToCartAsync(newItem))
      alert.success('Item added to Cart !')
