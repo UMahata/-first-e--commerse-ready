@@ -55,8 +55,10 @@ export function resetCart(){
     async(resolve)=>{
       const response = await fetchIteamsById()
       const items = response.data
+      
       for(let item of items){
-        await deleteItemFromCart(item.id)
+        
+        await deleteItemFromCart(item.product.id)
       }
       resolve({status:'success'})
     }

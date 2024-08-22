@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 //   updateUserAsync,
 // } from "../features/auth/AuthSlice";
 import { createOrderAsync, selectCurrentOrder, selectCurrentOrderStatus } from "../features/Order/orderSlice";
-import { updateUserAsync } from "../features/user/UserSlice";
+import { selectUserInfo, updateUserAsync } from "../features/user/UserSlice";
 import { selectLoggedInUser } from "../features/auth/AuthSlice";
 
 const address = [
@@ -46,7 +46,9 @@ const Checkout = () => {
     formState: { errors },
   } = useForm();
 
-  const user = useSelector(selectLoggedInUser);
+ 
+  const user = useSelector(selectUserInfo )
+ 
   
 
   const dispatch = useDispatch();
@@ -74,16 +76,16 @@ const Checkout = () => {
 
   const hamdleAddress=(e)=>{
      setSelectedAddress(user.addresses[e.target.value])
-     console.log(user.addresses[e.target.value])
+     
   }
   const hamdlePayment=(e)=>{
     setpaymentMethod(e.target.value)
-     console.log(e.target.value)
+   
   }
   const handleOrder=(e)=>{
     setSelectedAddress(user.addresses[e.target.value])
     setpaymentMethod(e.target.value)
-    console.log(cartItems)
+   
     const order = {items:cartItems, user:user.id, totalAmount,totalItems,paymentMethod,selectedAddress,status: 'pending'}
     dispatch(createOrderAsync(order))
     
@@ -327,7 +329,7 @@ const Checkout = () => {
                     Chose from Existing Address
                   </p>
                   <ul role="list" className="divide-y divide-gray-100">
-                    {user.addresses.map((address,index) => (
+                    { user.addresses.map((address,index) => (
                       <li
                         key={index}
                         className="flex justify-between gap-x-6 py-5"

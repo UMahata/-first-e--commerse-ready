@@ -2,9 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {  selectIteams } from "./cartSlice";
 import {updateCartAsync,deleteItemFromCartAsync} from './cartSlice'
 import { useState } from "react";
-
 import { Link, Navigate } from "react-router-dom";
-import Modal from "../common/Modal";
 
 
 
@@ -60,7 +58,7 @@ export default function Cart() {
                           <a href={item.product.href}>{item.product.title}</a>
                         </h3>
                         <p className="ml-4">${item.product.price}</p>
-                        <p className="ml-4">{item.product.id}</p>
+                        
                       </div>
                       <p className="mt-1 text-sm text-gray-500">
                         {item.product.brand}

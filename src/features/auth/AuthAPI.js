@@ -24,8 +24,11 @@ export function checkUser(loginInfo) {
         const data = await response.json()
         resolve({data})
       }else{
-        const err = await response.json()
-        resolve(err)
+        
+        const err = await response.text()
+        console.log(err)
+    
+        reject(err?'Wrong Email or Password':null)
       }
      
     }catch(err){

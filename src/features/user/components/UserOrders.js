@@ -7,16 +7,18 @@ import { selectLoggedInUser } from "../../auth/AuthSlice";
 
 const UserOrders = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
+
   const userOrders = useSelector(selectUserOrders);
+  console.log(userOrders)
+  
 
   useEffect(() => {
-    dispatch(fetchLoggedInUserOrdersAsync(user.id));
-  }, []);
+    dispatch(fetchLoggedInUserOrdersAsync());
+  }, [dispatch]);
   return (
     <>
       <div>
-        {userOrders.map((order,i) => (
+        { userOrders && userOrders.map((order,i) => (
           <div>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white mt-20">
               <div className="flex flex-col ">
