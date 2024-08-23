@@ -1,8 +1,10 @@
+import { baseUrl } from "../../urls";
+
 // A mock function to mimic making an async request for data
 export function createOrder(order) {
   console.log('send')
   return new Promise( async(resolve) =>{
-    const response = await fetch('/orders',{
+    const response = await fetch(`${baseUrl}/orders`,{
       method: "POST",
       body:JSON.stringify(order),
       headers:{'content-type':'application/json'}
@@ -15,7 +17,7 @@ export function createOrder(order) {
 }
 export function updateOrder(order) {
   return new Promise( async(resolve) =>{
-    const response = await fetch('/orders/'+order.id,{
+    const response = await fetch(`${baseUrl}/orders/`+order.id,{
       method: "PATCH",
       body:JSON.stringify(order),
       headers:{'content-type':'application/json'}
@@ -38,7 +40,7 @@ return new Promise( async(resolve) =>{
  const url =`/orders/?${queryString}`
  console.log(url)
 
-  const response = await fetch('/orders/?'+queryString)
+  const response = await fetch(`${baseUrl}/orders/?`+queryString)
   const data = await response.json()
   const totalItems = await response.headers.get('X-Total-Count');
   
