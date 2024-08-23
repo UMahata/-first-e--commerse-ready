@@ -1,7 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
-import { checkUserAsync, selectError, selectLoggedInUser  } from "../AuthSlice";
+import { loginUserAsync, selectError, selectLoggedInUser  } from "../AuthSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -39,7 +39,7 @@ export default function Login() {
        
         className="space-y-6" 
           onSubmit={handleSubmit((data) => {
-          dispatch(checkUserAsync({email:data.email,password:data.password}))
+          dispatch(loginUserAsync({email:data.email,password:data.password}))
           
         })}
         action="#" method="POST">

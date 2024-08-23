@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
-import { checkUserAsync, selectError, selectLoggedInUser  } from "../AuthSlice";
+import { loginUserAsync, selectError, selectLoggedInUser  } from "../AuthSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ForgotPassword = () => {

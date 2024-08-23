@@ -25,7 +25,7 @@ import UserOrdersPage from './Pages/UserOrdersPage';
 import UserProfile from './features/user/components/UserProfile';
 import UserProfilePage from './Pages/UserProfilePage';
 import { fetchLoggedInUserAsync } from './features/user/UserSlice';
-import { selectLoggedInUser } from './features/auth/AuthSlice';
+import { checkAuthAsync, selectLoggedInUser, selectUserChecked } from './features/auth/AuthSlice';
 import Logout from './features/auth/components/Logout';
 import ForgotPasswordPage from './Pages/ForgotPasswordPage';
 import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
@@ -120,8 +120,14 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch()
   const user = useSelector(selectLoggedInUser)
+  const userChecked = useSelector(selectUserChecked)
+
+  useEffect(()=>{
+    dispatch(checkAuthAsync()) 
+  },[])
   
   useEffect(()=>{
+   
     if(user){
       dispatch(fetchIteamsByIdAsync())
       dispatch(fetchLoggedInUserAsync())
@@ -130,9 +136,9 @@ function App() {
 
   return (
     <div >
-      <Provider template={AlertTemplate} {...options}>
+      {userChecked && <Provider template={AlertTemplate} {...options}>
       <RouterProvider router={router} />
-      </Provider>
+      </Provider>}
     </div>
   );
 }

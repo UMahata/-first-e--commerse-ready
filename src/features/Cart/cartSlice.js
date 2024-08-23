@@ -4,7 +4,7 @@ import { addToCart,deleteCart,deleteItemFromCart,fetchIteamsById,resetCart,updat
 const initialState = {
   status:'ideal',
   items: [],
-  
+  cartLoaded:false
 };
 
 
@@ -76,6 +76,11 @@ export const counterSlice = createSlice({
       .addCase(fetchIteamsByIdAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.items = action.payload ;
+        state.cartLoaded = true
+      })
+      .addCase(fetchIteamsByIdAsync.rejected, (state, action) => {
+        state.status = 'idle';
+        state.cartLoaded = true
       })
       .addCase( updateCartAsync.pending, (state) => {
         state.status = 'loading';
@@ -109,6 +114,7 @@ export const counterSlice = createSlice({
 export const { increment} = counterSlice.actions;
 
 export const selectIteams = (state) => state.cart.items;
+export const selectCartLoaded = (state) => state.cart.cartLoaded;
 
 
 

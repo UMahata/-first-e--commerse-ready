@@ -12,7 +12,7 @@ export function createUser(userData) {
     
   );
 }
-export function checkUser(loginInfo) {
+export function loginUser(loginInfo) {
   return new Promise( async(resolve,reject) =>{
     try{
       const response = await fetch('http://localhost:8080/auth/login',{
@@ -20,6 +20,28 @@ export function checkUser(loginInfo) {
         body:JSON.stringify(loginInfo),
         headers:{'content-type':'application/json'} ,
       });
+      if(response.ok){
+        const data = await response.json()
+        resolve({data})
+      }else{
+        
+        const err = await response.text()
+        console.log(err)
+    
+        reject(err?'Wrong Email or Password':null)
+      }
+     
+    }catch(err){
+        reject(err)
+    }  
+  }
+    
+  );
+}
+export function checkAuth() {
+  return new Promise( async(resolve,reject) =>{
+    try{
+      const response = await fetch('http://localhost:8080/auth/check');
       if(response.ok){
         const data = await response.json()
         resolve({data})

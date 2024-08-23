@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import {  selectIteams } from "./cartSlice";
+import {  selectCartLoaded, selectIteams } from "./cartSlice";
 import {updateCartAsync,deleteItemFromCartAsync} from './cartSlice'
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
@@ -10,6 +10,7 @@ export default function Cart() {
   const dispatch = useDispatch()
   const [open, setOpen] = useState(true);
   const cartItems = useSelector(selectIteams)
+  const cartLoaded = useSelector(selectCartLoaded)
   
   const totalAmount = cartItems.reduce((amount,iteam)=>amount+iteam.product.price*iteam.quantity,0)
   const totalItems = cartItems.reduce((total,item)=>total + item.quantity,0)
@@ -31,7 +32,7 @@ export default function Cart() {
   return (
     <>
       
-    {cartItems.length<=0 && <Navigate to= '/' replace={true}></Navigate>}
+    {cartItems.length<=0 && cartLoaded && <Navigate to= '/' replace={true}></Navigate>}
         
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white mt-20">
         <div className="flex justify-center">
