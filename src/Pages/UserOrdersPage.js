@@ -6,7 +6,9 @@ const UserOrdersPage = () => {
   return (
     <div>
       <Navbar/>
-      <h1 className='mx-10 text-2xl'>My Orders</h1>
+      
+      <h1 className='m-6 text-4xl font-bold text-center'>My Orders</h1>
+      <hr />
       <UserOrders/>
     </div>
   )

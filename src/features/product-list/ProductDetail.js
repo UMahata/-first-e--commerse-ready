@@ -13,10 +13,7 @@ const product = {
   name: 'Basic Tee 6-Pack',
   price: '$192',
   href: '#',
-  breadcrumbs: [
-    { id: 1, name: 'Men', href: '#' },
-    { id: 2, name: 'Clothing', href: '#' },
-  ],
+  
   images: [
     {
       src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
@@ -76,6 +73,7 @@ const ProductDetail = () => {
   const items = useSelector(selectIteams)
   const params = useParams()
   const productData = useSelector(selectedProductById)
+  console.log(productData)
   const alert = useAlert();
 
  
@@ -105,34 +103,7 @@ const ProductDetail = () => {
     <>
    {productData && <div className="bg-white">
       <div className="pt-6">
-        <nav aria-label="Breadcrumb">
-          <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            {product.breadcrumbs && product.breadcrumbs.map((breadcrumb) => (
-              <li key={breadcrumb.id}>
-                <div className="flex items-center">
-                  <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
-                    {breadcrumb.name}
-                  </a>
-                  <svg
-                    width={16}
-                    height={20}
-                    viewBox="0 0 16 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-300"
-                  >
-                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                  </svg>
-                </div>
-              </li>
-            ))}
-            <li className="text-sm">
-              <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
-                {product.name}
-              </a>
-            </li>
-          </ol>
-        </nav>
+       
 
         {/* Image gallery */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -144,41 +115,35 @@ const ProductDetail = () => {
             />
           </div>
           <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-            <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+            {productData.images[1] &&<div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
               <img
                 src={productData.images[1]}
                 alt={productData.title}
                 className="h-full w-full object-cover object-center"
               />
-            </div>
-            <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+            </div>}
+            {productData.images[2] && <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
               <img
                 src={productData.images[2]}
                 alt={productData.title}
                 className="h-full w-full object-cover object-center"
               />
-            </div>
+            </div>}
           </div>
          
-          {productData.images[3] && <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-            <img
-              src={productData.images[3]}
-              alt={productData.title}
-              className="h-full w-full object-cover object-center"
-            />
-          </div>}
+         
         </div>
 
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.title}</h1>
+          
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">${productData.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -317,31 +282,97 @@ const ProductDetail = () => {
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{productData.description}</p>
+                <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{productData.title}</p>
               </div>
             </div>
-
-            <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-              <div className="mt-4">
-                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                  {product.highlights && product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
             <div className="mt-10">
               <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
               <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{product.details}</p>
+                <p className="text-sm text-gray-600">{productData.description}</p>
               </div>
             </div>
+            <hr className='mt-5'/>
+
+          <div className='flex flex-wrap gap-12'>
+          <div className="mt-6 border-gray-800">
+              <h2 className="text-sm font-medium text-gray-900">Weight</h2>
+              <div className="mt-2 space-y-6">
+                <p className="text-sm text-gray-600">{productData.weight} kg</p>
+              </div>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-sm font-medium text-gray-900">Warrenty</h2>
+              <div className="mt-2 space-y-6">
+                <p className="text-sm text-gray-600">{productData.warrantyInformation} </p>
+              </div>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-sm font-medium text-gray-900">Shipping Time</h2>
+              <div className="mt-2 space-y-6">
+                <p className="text-sm text-gray-600">{productData.shippingInformation} </p>
+              </div>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-sm font-medium text-gray-900">Return Policy</h2>
+              <div className="mt-2 space-y-6">
+                <p className="text-sm text-gray-600">{productData.returnPolicy} </p>
+              </div>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-sm font-medium text-gray-900">Minimum Order Quantity</h2>
+              <div className="mt-2 space-y-6">
+                <p className="text-sm text-gray-600">{productData.minimumOrderQuantity} </p>
+              </div>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-sm font-medium text-gray-900">Return Policy</h2>
+              <div className="mt-2 space-y-6">
+                <p className="text-sm text-gray-600">{productData.returnPolicy} </p>
+              </div>
+            </div>
+          </div>
+            <hr className='mt-5'/>
+            <div>
+            <div className="space-y-6 mt-7">
+                <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Reviews</p>
+              </div> 
+            <div>
+              {productData.reviews.map((review)=>(
+                  <div className="mt-6">
+                  <div className='flex justify-between mr-5'>
+                  <h2 className="text-lg font-medium text-gray-900">{review.reviewerName}</h2>
+                  <div className="flex items-center">
+                  {[0, 1, 2, 3, 4].map((rating) => (
+                    <StarIcon
+                      key={rating}
+                      className={classNames(
+                        review.rating > rating ? 'text-gray-900' : 'text-gray-300',
+                        'h-5 w-5 flex-shrink-0',
+                      )}
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                  </div>
+                  <div className="mt-2 ">
+                    <p className="text-sm font-bold text-gray-900">{review.comment} </p>
+                    
+                   
+                    
+                    
+                  </div>
+                  <hr className='mt-5'/>
+                </div>
+              ))}
+            
+            </div>
+            </div>
+            
+
+            
+
+          
           </div>
         </div>
       </div> 

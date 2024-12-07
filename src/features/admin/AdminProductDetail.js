@@ -110,7 +110,7 @@ const AdminProductDetail = () => {
                     height={20}
                     viewBox="0 0 16 20"
                     fill="currentColor"
-                    aria-hidden="true"
+                    aria-hidden="false"
                     className="h-5 w-4 text-gray-300"
                   >
                     <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />

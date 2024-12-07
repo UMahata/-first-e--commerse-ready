@@ -1,4 +1,5 @@
 import React from 'react'
+import { varathoplogo } from '../../assets'
 
 const Footer = () => {
   return (
@@ -13,20 +14,19 @@ const Footer = () => {
               <div className="flex items-center space-x-2 text-2xl font-medium">
                 <span>
                   <img
-                    src="https://www.svgrepo.com/show/452102/slack.svg"
+                    src={varathoplogo}
                     alt="AI Logo"
                     width={64}
                     height={64}
-                    className="w-16"
+                    className="w-16 rounded-full m-5"
                   />
                 </span>
-                <span className="text-white">AIOps</span>
+                <span className="text-white">VARAT SHOP</span>
               </div>
             </a>
           </div>
           <div className="max-w-md pr-16 text-md text-gray-200">
-            Enhance productivity and efficiency with cutting-edge artificial
-            intelligence solutions for your business operations.
+          Welcome to our online variety shop, where you'll find a wide range of unique products for every need. From trendy fashion items to home essentials, we offer something for everyone. 
           </div>
           <div className="flex space-x-2">
             <a
@@ -69,7 +69,7 @@ const Footer = () => {
           <div className="md:grid md:grid-cols-2 md:gap-8">
             <div>
               <h3 className="text-md font-semibold leading-6 text-white">
-                Our Solutions
+                Our Variety Products
               </h3>
               <ul role="list" className="mt-6 space-y-4">
                 <li>
@@ -77,7 +77,7 @@ const Footer = () => {
                     href="/aiplatform"
                     className="text-md leading-6 text-gray-300 hover:text-gray-50"
                   >
-                    AI Platform
+                   Smart Electronics
                   </a>
                 </li>
                 <li>
@@ -85,7 +85,7 @@ const Footer = () => {
                     href="/aialgorithms"
                     className="text-md leading-6 text-gray-300 hover:text-gray-50"
                   >
-                    AI Algorithms
+                    Home Usual Tools
                   </a>
                 </li>
                 <li>
@@ -93,14 +93,14 @@ const Footer = () => {
                     href="/industryapplications"
                     className="text-md leading-6 text-gray-300 hover:text-gray-50"
                   >
-                    Industry Applications
+                    Fresh Vegetables
                   </a>
                 </li>
               </ul>
             </div>
             <div className="mt-10 md:mt-0">
               <h3 className="text-md font-semibold leading-6 text-white">
-                Use Cases
+                Betterness
               </h3>
               <ul role="list" className="mt-6 space-y-4">
                 <li>
@@ -108,7 +108,7 @@ const Footer = () => {
                     href="/predictiveanalysis"
                     className="text-md leading-6 text-gray-300 hover:text-gray-50"
                   >
-                    Predictive Analysis
+                    24 Hours Customer Service
                   </a>
                 </li>
                 <li>
@@ -124,7 +124,7 @@ const Footer = () => {
                     href="/automation"
                     className="text-md leading-6 text-gray-300 hover:text-gray-50"
                   >
-                    Automation
+                    Fast Delivery
                   </a>
                 </li>
               </ul>
@@ -136,14 +136,7 @@ const Footer = () => {
                 Resources
               </h3>
               <ul role="list" className="mt-6 space-y-4">
-                <li>
-                  <a
-                    href="/pricing"
-                    className="text-md leading-6 text-gray-300 hover:text-gray-50"
-                  >
-                    Pricing
-                  </a>
-                </li>
+                
                 <li>
                   <a
                     href="/blog"
@@ -214,10 +207,9 @@ const Footer = () => {
       </div>
       <div className="mt-16 border-t border-gray-400/30 pt-8 sm:mt-20 lg:mt-24">
         <div className="text-md text-center text-white">
-          Copyright © 2024 . Crafted with
-          <span className="text-gray-50">♥</span> by AI enthusiasts at
-          <a rel="noopener" href="/">
-            AIOps.
+          Copyright © 2025 . Crafted with
+          <span className="text-gray-50"><span className='mx-1'>♥</span></span> by UTPAL MAHATA at 
+          <a rel="noopener" href="/"> VARAT SHOP.
           </a>
         </div>
       </div>

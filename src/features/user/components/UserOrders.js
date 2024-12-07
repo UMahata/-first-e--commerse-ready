@@ -9,7 +9,7 @@ const UserOrders = () => {
   const dispatch = useDispatch();
 
   const userOrders = useSelector(selectUserOrders);
-  console.log(userOrders)
+ 
   
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const UserOrders = () => {
     <>
       <div>
         { userOrders && userOrders.map((order,i) => (
-          <div>
+          <div key={i}>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white mt-20">
               <div className="flex flex-col ">
                 <h1 className="text-3xl font-bold  m-3">

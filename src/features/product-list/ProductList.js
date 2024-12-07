@@ -124,7 +124,7 @@ export default function ProductList() {
       newFilter[section.id].splice(index, 1);
     }
 
-    console.log({ newFilter });
+    
     setFilter(newFilter);
   };
   const handleSort = (e, option) => {
@@ -217,6 +217,7 @@ export default function ProductList() {
                                     {section.name}
                                   </span>
                                   <span className="ml-6 flex items-center">
+                                    
                                     {open ? (
                                       <MinusIcon
                                         className="h-5 w-5"
@@ -271,8 +272,8 @@ export default function ProductList() {
           </Transition>
 
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-4">
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 All Products
               </h1>
 
@@ -339,7 +340,7 @@ export default function ProductList() {
               </div>
             </div>
 
-            <section aria-labelledby="products-heading" className="pb-24 pt-6">
+            <section aria-labelledby="products-heading" className="pb-4 lg:pb-24 pt-6">
               <h2 id="products-heading" className="sr-only">
                 Products
               </h2>
@@ -378,15 +379,16 @@ const SideFilter = ({ filters, handleFilter }) => {
           key={section.id}
           className="border-b border-gray-200 py-6"
         >
-          {({ open }) => (
+          {({ open}) => (
             <>
               <h3 className="-my-3 flow-root">
                 <DisclosureButton className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
                   <span className="font-medium text-gray-900">
                     {section.name}
+                    
                   </span>
                   <span className="ml-6 flex items-center">
-                    {open ? (
+                    {!open ? (
                       <MinusIcon className="h-5 w-5" aria-hidden="true" />
                     ) : (
                       <PlusIcon className="h-5 w-5" aria-hidden="true" />
@@ -394,8 +396,8 @@ const SideFilter = ({ filters, handleFilter }) => {
                   </span>
                 </DisclosureButton>
               </h3>
-              <DisclosurePanel className="pt-6">
-                <div className="space-y-4">
+              {!open && <div className="pt-6">
+              <div className="space-y-4">
                   {section.options.map((option, optionIdx) => (
                     <div key={optionIdx} className="flex items-center">
                       <input
@@ -418,7 +420,10 @@ const SideFilter = ({ filters, handleFilter }) => {
                     </div>
                   ))}
                 </div>
-              </DisclosurePanel>
+              </div>}
+              {/* <DisclosurePanel className="pt-6">
+                
+              </DisclosurePanel> */}
             </>
           )}
         </Disclosure>
@@ -430,9 +435,9 @@ const SideFilter = ({ filters, handleFilter }) => {
 
 const ProductGrid = ({ products,status }) => {
   return (
-    <div className="lg:col-span-3">
+    <div className="lg:col-span-3 ">
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 py-4 lg:py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         {status ==="loading"?<Blocks
         height="80"
         width="80"
@@ -443,7 +448,7 @@ const ProductGrid = ({ products,status }) => {
         className="mx-auto"
         visible={true}
         />:null}
-          <div className="mt-6 grid  grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+          <div className="mt-0 lg:mt-6  grid  grid-cols-2 gap-x-2 gap-y-4 lg:gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
        
             {products.map((product) => (
               <Link to={`/products/${product.id}`} key={product.id}>

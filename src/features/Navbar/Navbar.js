@@ -16,6 +16,7 @@ import { selectIteams } from '../Cart/cartSlice'
 import { fetchLoggedInUser } from '../user/UserAPI'
 import { selectLoggedInUser } from '../auth/AuthSlice'
 import { selectUserInfo } from '../user/UserSlice'
+import { babyposter1, varathoplogo, varatshoplogopng } from '../../assets'
   
   const user = {
     name: 'Tom Cook',
@@ -58,12 +59,18 @@ const Navbar = ({children}) => {
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <Link to='/'>
-                    <div className="flex-shrink-0">
+                    <div className=" flex flex-shrink-0 items-center">
                       <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                        className="h-10 w-10 rounded-full "
+                        src={varathoplogo}
                         alt="Your Company"
                       />
+                      <div>
+                      <h2 className="text-xl mx-4 text-white font-bold text-center">VARAT SHOP</h2>
+                      <p className="text-sm  text-center  text-purple-200 ">Best Buy Always</p>
+                      </div>
+
+                      
                     </div>
                     
                     </Link>
@@ -214,14 +221,8 @@ const Navbar = ({children}) => {
           )}
         </Disclosure>
 
-        <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">E-commerce</h1>
-          </div>
-        </header>
-        <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{children}</div>
-        </main>
+       
+     
       </div>}
     </>
   )
