@@ -2,8 +2,10 @@ import { baseUrl } from "../../urls";
 
 // A mock function to mimic making an async request for data
 export function fetchAllProducts() {
-  console.log('called')
+  
   return new Promise( async(resolve) =>{
+    
+    
     const response = await fetch(`${baseUrl}/products`)
     const data = await response.json()
     resolve({data})
@@ -73,12 +75,17 @@ export function fetchProductsByFilters(filter,sort,pagination) {
     //sort = {_sort:"price",_order="desc"}
   //TODO : on server it will support multiple values
   //pagination ={_page=1,_limit=10}
+  console.log(filter)
   let queryString = ''
   for(let key in filter){
     const categoryValues = filter[key]
+    console.log(categoryValues)
     if(categoryValues.length>0){
-        const lastCategoryValue = categoryValues[categoryValues.length-1]
-              queryString += `${key}=${lastCategoryValue}&`
+        categoryValues.map((value)=>{
+          console.log(value);
+          queryString += `${key}=${value}&`
+        })
+         
     }
    
   }
@@ -94,6 +101,7 @@ export function fetchProductsByFilters(filter,sort,pagination) {
   return new Promise( async(resolve) =>{
    
    const url =`/products/?${queryString}`
+   console.log(url)
    
    
     const response = await fetch(`${baseUrl}/products/?`+queryString)

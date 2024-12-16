@@ -2,12 +2,14 @@ import { baseUrl } from "../../urls";
 
 export function createUser(userData) {
   return new Promise( async(resolve) =>{
+    console.log(userData)
     const response = await fetch(`${baseUrl}/auth/signup`,{
       method: "POST",
       body:JSON.stringify(userData),
       headers:{'content-type':'application/json'} 
     })
     const data = await response.json()
+    
     resolve({data})
   }
     
@@ -15,6 +17,8 @@ export function createUser(userData) {
 }
 export function loginUser(loginInfo) {
   return new Promise( async(resolve,reject) =>{
+   
+    
     try{
       const response = await fetch(`${baseUrl}/auth/login`,{
         method: "POST",

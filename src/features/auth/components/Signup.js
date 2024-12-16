@@ -18,10 +18,7 @@ const dispatch = useDispatch()
 
   const comingUserData = useSelector(selectLoggedInUser)
 
-  function doReturn(){
-    console.log('found')
-    
-  }
+ 
 
  
   
@@ -55,7 +52,7 @@ const dispatch = useDispatch()
             className="space-y-6"
             onSubmit={handleSubmit((data) => {
               dispatch(createUserAsync({email:data.email,password:data.password,addresses:[],role:'user'}))
-              doReturn()
+            
               
               
             })}
